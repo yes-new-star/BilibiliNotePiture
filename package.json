@@ -1,0 +1,15 @@
+{
+  "name": "getpitureofbilibili",
+  "version": "1.0.0",
+  "description": "Get piture of bilibili",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./index.mjs"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^3.3.1"
+  }
+}
