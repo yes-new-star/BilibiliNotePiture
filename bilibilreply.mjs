@@ -2,7 +2,7 @@
 import https from "https";
 import querystring from "querystring";
 
-const myCookie ="";
+const myCookie = "";
 const reg = /(?<=bili_jct=)[0-9a-f]{32}/;
 
 const reply_csrf = myCookie.match(reg)[0];
