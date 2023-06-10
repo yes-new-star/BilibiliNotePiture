@@ -1,9 +1,3 @@
-/*
- * @name: 
- * @msg: 
- * @param: 
- * @return: 
- */
 import { spawn } from 'child_process';
 
 
