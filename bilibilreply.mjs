@@ -2,7 +2,8 @@
 import https from "https";
 import querystring from "querystring";
 
-const myCookie = "";
+const myCookie =
+  ""
 const reg = /(?<=bili_jct=)[0-9a-f]{32}/;
 
 const reply_csrf = myCookie.match(reg)[0];
@@ -104,8 +105,8 @@ function reply_req_fun(data, at_nums) {
           j < reply_data.data.seek_root_reply.content.pictures.length;
           j++
         ) {
-          add_message += `图片${j + 1}地址：${
-            reply_data.data.seek_root_reply.content.pictures[j].img_src
+          add_message += `图片${j + 1}地址：https: ${
+            reply_data.data.seek_root_reply.content.pictures[j].img_src.split(':')[1]
           }\n`;
         }
         console.log(
