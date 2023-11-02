@@ -1,11 +1,11 @@
-
 import https from "https";
 import querystring from "querystring";
 
-const myCookie =
-  ""
+// 输入个人登录Cookie
+const myCookie = "";
 const reg = /(?<=bili_jct=)[0-9a-f]{32}/;
 
+// 获取reply_csrf的值
 const reply_csrf = myCookie.match(reg)[0];
 
 let at_s = 0;
@@ -106,13 +106,15 @@ function reply_req_fun(data, at_nums) {
           j++
         ) {
           add_message += `图片${j + 1}地址：https: ${
-            reply_data.data.seek_root_reply.content.pictures[j].img_src.split(':')[1]
+            reply_data.data.seek_root_reply.content.pictures[j].img_src.split(
+              ":",
+            )[1]
           }\n`;
         }
         console.log(
           "Response body:",
           reply_data.data.seek_root_reply.content.pictures,
-          reply_csrf
+          reply_csrf,
         );
         // 回复请求
         const datas = {
@@ -121,12 +123,12 @@ function reply_req_fun(data, at_nums) {
           type: 1,
           root: data.data.items[at_nums - i - 1].item.target_id,
           parent: data.data.items[at_nums - i - 1].item.source_id,
-          jsonp:'jsonp',
+          jsonp: "jsonp",
           message: add_message,
           scene: "msg",
-          plat: '1',
+          plat: "1",
           from: "im-reply",
-          build: '0',
+          build: "0",
           mobi_app: "web",
           csrf_token: reply_csrf,
           csrf: reply_csrf,
@@ -168,6 +170,7 @@ function reply_req_fun(data, at_nums) {
   }
 }
 
+// 主函数执行
 async function main() {
   const unread_req_data = await unread_req_fun();
   if (unread_req_data.data.at > 0) {
@@ -175,7 +178,7 @@ async function main() {
     const at_req_data = await at_req_fun(unread_req_data);
     await reply_req_fun(at_req_data, at_s);
   }
-  console.log('没人艾特我！');
+  console.log("没人艾特我！");
 }
 
 main();
